@@ -2,14 +2,7 @@ package com.bank.model.dto;
 
 import java.util.List;
 
-import com.bank.model.entities.Utilisateur;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-import lombok.Data;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -18,8 +11,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
 @Data
+
 @EqualsAndHashCode(onlyExplicitlyIncluded = true,callSuper = false)
 
 public class UtilisateurDto extends BaseDto {
@@ -39,6 +32,7 @@ public class UtilisateurDto extends BaseDto {
 	@JsonIgnoreProperties("utilisateur")
 
 	private ProfileDto profile;
+	private String roles;
 	
 	
 	

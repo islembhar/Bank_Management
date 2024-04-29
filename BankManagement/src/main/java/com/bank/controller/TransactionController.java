@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ import lombok.RequiredArgsConstructor;
 public class TransactionController {
  private final	TransactionService transactionService;
  @GetMapping
+ @PreAuthorize("hasAuthority('ADMIN_ROLES')")
  public ResponseEntity<Page<TransactionDto>> getTransactions(Pageable pageable)
  {
 	 return ResponseEntity.ok().body(transactionService.getAllTransactions(pageable));
