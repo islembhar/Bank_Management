@@ -16,6 +16,7 @@ import lombok.Setter;
 
 import java.util.List;
 
+import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -41,7 +42,8 @@ public class Utilisateur extends BaseEntity {
 	@OneToOne(mappedBy = "utilisateur")
 	
 	private Profile profile;
-
+	@Column(columnDefinition = "varchar(30) default 'USER_ROLES' ")
+	  private String roles;
 	
 	
 

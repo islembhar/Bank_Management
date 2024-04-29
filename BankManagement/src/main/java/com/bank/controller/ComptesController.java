@@ -3,6 +3,7 @@ package com.bank.controller;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,12 +29,14 @@ public ResponseEntity<CompteDto> findOneCompte(@PathVariable long id)
 return ResponseEntity.ok(compteService.getCompteById(id));
 }
 @GetMapping
+@PreAuthorize("hasAuthority('ADMIN_ROLES')")
 public ResponseEntity<Page<CompteDto>> findAll(Pageable pageable)
 {
 return ResponseEntity.ok(compteService.getAllComptes(pageable));	
 
 }
 @DeleteMapping("/{id}")
+@PreAuthorize("hasAuthority('ADMIN_ROLES')")
 public ResponseEntity<Void> deleteCompte(@PathVariable long id)
 {
 compteService.deleteOne(id);
